@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;                               
+            background-color: #f6f7f8;  
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center; 
+        }
+
+        .contact-container {
+            background-color: #efece8; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+            padding: 32px;
+            max-width: 500px; 
+            width: 90%; 
+            margin: 32px auto; 
+        }
+ 
+        .contact-title {
+            font-size: 32px; 
+            font-weight: 700; 
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 4px; 
+        }
+
+        .form-group {
+            margin-bottom: 16px; 
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 15px; 
+            font-weight: 600; 
+            color: #374151;
+            margin-bottom: 8px; 
+        }
+
+
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #623e13; 
+            border-radius: 8px;
+            font-size: 16px; 
+            color: #1f2937; 
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical; 
+        }
+
+        .submit-button {
+            display: block; 
+            width: 100%;
+            padding: 12px 24px; 
+            background-color: #4b300e; 
+            color: #ffffff;
+            font-size: 16px; 
+            font-weight: 600;
+            border: none;
+            border-radius: 8px; 
+
+        }
+
+        .submit-button:hover {
+            background-color: #000; 
+        }
+
+        .contact-container {
+                padding: 24px;
+                width: 95%;
+        }
+        .contact-title {
+                font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+    <img src="./images/Company-Logo.png" alt="Logo">
+    </div>
+    <div class="contact-container">
+        <h1 class="contact-title">Login</h1>
+        <form action="#" method="POST" id="loginForm">
+             <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Password</label>
+                <input type="password" id="password" name="password" placeholder="password" required>
+            </div>
+           
+            <button type="submit" class="submit-button">Login</button>
+        </form>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
