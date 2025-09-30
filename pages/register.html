@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>Register</title>
 
     <style>
         body {
@@ -47,8 +47,7 @@
         }
 
 
-        .form-group input[type="password"],
-        .form-group input[type="email"],
+        .form-group input,
         .form-group textarea {
             width: 100%; 
             padding: 12px; 
@@ -101,24 +100,37 @@
 <body>
 
     <div>
-    <img src="./images/Company-Logo.png" alt="Logo">
+    <img src="../images/Company-Logo.png" alt="Logo">
     </div>
     <div class="contact-container">
-        <h1 class="contact-title">Login</h1>
-        <form action="#" method="POST" id="loginForm">
-             <div class="form-group">
-                <label for="email">Your Email</label>
+        <h1 class="contact-title">Register</h1>
+        <form action="#" method="POST" id="registerForm">
+             
+            <div class="form-group">
+                <label for="firstName">Firstname</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Lastname</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Enter your lastname" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
             <div class="form-group">
                 <label for="name">Password</label>
                 <input type="password" id="password" name="password" placeholder="password" required>
             </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="password" required>
+            </div>
            <p class="errorText"></p>
-            <button type="submit" class="submit-button">Login</button>
-            <a href="./pages/register.html">You don't have an account? Register</a>
+            <button type="submit" class="submit-button">Register</button>
+            <a href="../index.html">You have an account already? Login</a>
         </form>
     </div>
-    <script src="./app.js"></script>
+    <script src="./register.js"></script>
 </body>
 </html>
