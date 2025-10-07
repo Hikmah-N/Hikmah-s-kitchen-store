@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
  <head>
+    <title>Home - Hikmah's Kitchen Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
 
         body{
@@ -126,14 +129,33 @@
         }
   </style>
     <script>
-      function logout() {
-            localStorage.removeItem('users');
-     window.location.replace("../index.html")
-     console.log("i'm clicked")
-
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        
+      if (!currentUser || !currentUser.isAuthenticated) {
+        window.location.replace("../index.html");
       }
-
+    
+      function logout() {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      
+        if (currentUser) {
+          // Set user's isAuthenticated to false
+          const updatedUsers = users.map((user) =>
+            user.email === currentUser.email
+              ? { ...user, isAuthenticated: false }
+              : user
+          );
+        
+          localStorage.setItem("users", JSON.stringify(updatedUsers));
+          localStorage.removeItem("currentUser");
+        }
+      
+        window.location.replace("../index.html");
+        console.log("User logged out");
+      }
     </script>
+
     </head>
 <body>
    
