@@ -104,10 +104,8 @@
         const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
         if (currentUser && currentUser.isAuthenticated) {
-          // Redirect logged-in users away from login/register
           window.location.replace("./pages/Home.html");
         }
-
     </script>
 </head>
 <body>

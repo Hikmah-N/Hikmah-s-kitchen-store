@@ -80,40 +80,13 @@
 
         
     </style>
-    <script>
-
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    
-    if (!currentUser || !currentUser.isAuthenticated) {
-        window.location.replace("../index.html");
-    }
-    
-    function logout() {
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-        if (currentUser) {
-          // Set user's isAuthenticated to false
-            const updatedUsers = users.map((user) =>
-            user.email === currentUser.email
-                ? { ...user, isAuthenticated: false }
-                : user
-            );
-            localStorage.setItem("users", JSON.stringify(updatedUsers));
-            localStorage.removeItem("currentUser");
-        }
-        window.location.replace("../index.html");
-        console.log("User logged out");
-    }
-    
-    </script>
-    <head></head>
+    </head>
 
 <body>
 
      </div> 
     <header class="website-header">
-        <h2>Welcome to Hikmah's Kitchen Store!</h2>
+        <h2>Welcome, <span id="welcome-message"></span>!</h2>
     </div>
     </header>
     
@@ -153,6 +126,37 @@
         </p>
     </div>
 
+<script>
 
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    
+    if (!currentUser || !currentUser.isAuthenticated) {
+        window.location.replace("../index.html");
+    }
+
+    if (currentUser) {
+      const welcome = document.getElementById("welcome-message");
+        welcome.textContent = currentUser.lastName;
+    }
+    
+    function logout() {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+        if (currentUser) {
+          // Set user's isAuthenticated to false
+            const updatedUsers = users.map((user) =>
+            user.email === currentUser.email
+                ? { ...user, isAuthenticated: false }
+                : user
+            );
+            localStorage.setItem("users", JSON.stringify(updatedUsers));
+            localStorage.removeItem("currentUser");
+        }
+        window.location.replace("../index.html");
+        console.log("User logged out");
+    }
+    
+    </script>
 </body>
 </html
