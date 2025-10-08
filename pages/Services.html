@@ -49,6 +49,19 @@
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: 20px;
         }
+        .logout-button {
+        background-color: #4b300e;
+        color: #f8f8eb;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+
+        }
+        .logout-button:hover{
+          background-color: #0b0b0b;
+          cursor: pointer;
+        }
+        
 
         </style>
 
@@ -83,7 +96,7 @@
 </html>
 
 <body>
-        <nav>
+       <nav>
         <img src="../images/Company-Logo.png" alt="Logo">
         <ul>
             <li><a href="./Home.html">Home</a></li>
@@ -91,6 +104,8 @@
             <li><a href="./Product.html">Product</a></li>
             <li><a href="./Services.html">Services</a></li>
             <li><a href="./Contact.html">Contact</a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><button class="logout-button" onclick="logout()">logout</button></li>
         </ul>
     </nav>
 </body>

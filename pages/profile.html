@@ -77,6 +77,18 @@
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: 20px;
         }
+        .logout-button {
+        background-color: #4b300e;
+        color: #f8f8eb;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+
+        }
+        .logout-button:hover{
+          background-color: #0b0b0b;
+          cursor: pointer;
+        }
 
         
     </style>
@@ -90,7 +102,7 @@
     </div>
     </header>
     
-     <nav>
+    <nav>
         <img src="../images/Company-Logo.png" alt="Logo">
         <ul>
             <li><a href="./Home.html">Home</a></li>
@@ -98,31 +110,25 @@
             <li><a href="./Product.html">Product</a></li>
             <li><a href="./Services.html">Services</a></li>
             <li><a href="./Contact.html">Contact</a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><button class="logout-button" onclick="logout()">logout</button></li>
         </ul>
     </nav>
 
     <div>
      
-        <h3>Your one-stop shop for quality kitchen essentials!</h3>
+        <h3>Personal Info</h3>
         <p class="about">
 
-            At Hikmah's Kitchen Store, we offer a wide variety of top-quality kitchen utensils — from stylish cutlery sets to powerful blenders and everything in between. Whether you're setting up a new kitchen or upgrading your tools, we’ve got you covered!
-            <div class="list">Our collection includes:
+            <div class="list">
             <ul>
-            <li>Elegant and durable cutlery sets</li>
-            <li>High-performance blenders and food processors</li>
-            <li>Non-stick cookware and bakeware</li>
-            <li>Sleek kitchen tools and gadgets</li>
-            <li>And many more everyday essentials!</li>
+            <li id="firstName"></li>
+            <li id="lastName"></li>
+            <li id="email"></li>
             </ul>
             </div>
 
-        <p class="about">✨ Bonus: We also recommend trusted kitchen furniture companies to help you create the perfect cooking space.</p>
-
-        <p class="about2"></p><p>Visit us today and bring ease, elegance, and efficiency to your kitchen!</p>
-
-            [07039097834],<br>[Tokyo Japan] 
-
+       
         </p>
     </div>
 
@@ -132,11 +138,22 @@
     
     if (!currentUser || !currentUser.isAuthenticated) {
         window.location.replace("../index.html");
-    }
+    } 
 
     if (currentUser) {
       const welcome = document.getElementById("welcome-message");
-        welcome.textContent = currentUser.lastName;
+        welcome.textContent = currentUser.lastName; 
+
+       const firstName =  document.getElementById("firstName");
+       const lastName =  document.getElementById("lastName");
+       const email =  document.getElementById("email");
+
+       firstName.textContent = "Firstname: " + currentUser.firstName;
+       lastName.textContent = "Lastname: " + currentUser.lastName
+       email.textContent = "Email: " + currentUser.email
+
+
+
     }
     
     function logout() {
