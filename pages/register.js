@@ -11,6 +11,8 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
 
   if (password !== confirmPassword) {
     errorText.textContent = "Passwords do not match";
+     errorText.style.color = "red";
+     errorText.style.fontStyle = "italic";
     return;
   }
 
@@ -19,6 +21,7 @@ document.getElementById("registerForm").addEventListener("submit", (e) => {
 
   if (userExists) {
     errorText.textContent = "User already exists";
+    errorText.style.fontStyle = "italic";
     return;
   }
 

@@ -11,12 +11,14 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
   if (!foundUser) {
     errorText.textContent = "User not found";
     errorText.style.color = "red";
+    errorText.style.fontStyle = "italic";
     return;
   }
 
   if (foundUser.password !== password) {
     errorText.textContent = "Invalid password";
      errorText.style.color = "red";
+     errorText.style.fontStyle = "italic";
     
     return;
   }
