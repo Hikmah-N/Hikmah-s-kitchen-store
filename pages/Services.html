@@ -61,11 +61,59 @@
           background-color: #0b0b0b;
           cursor: pointer;
         }
+
+        .food-section {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            justify-content: center;
+            padding: 20px 30px;
+            border: 1px solid #ccc;
+            @media (min-width: 960px) {
+              grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .read-more-button {
+            background-color: #4b300e;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
         
 
         </style>
 
-        <script>
+  
+    </head>
+    <body>
+       <nav>
+        <img src="../images/Company-Logo.png" alt="Logo">
+        <ul>
+            <li><a href="./Home.html">Home</a></li>
+            <li><a href="./About.html">About</a></li>
+            <li><a href="./Product.html">Product</a></li>
+            <li><a href="./Services.html">Services</a></li>
+            <li><a href="./Contact.html">Contact</a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><button class="logout-button" onclick="logout()">logout</button></li>
+        </ul>
+    </nav>
+
+    <div style="padding-top:80px; padding-left:20px; padding-right:20px;">
+        <h1>Our Services</h1>
+    </div>
+
+
+    <div class="food-section">
+
+    </div>
+
+
+
+    <script>
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
         
       if (!currentUser || !currentUser.isAuthenticated) {
@@ -91,21 +139,55 @@
         window.location.replace("../index.html");
         console.log("User logged out");
       }
-    </script>
-    </head>
-</html>
 
-<body>
-       <nav>
-        <img src="../images/Company-Logo.png" alt="Logo">
-        <ul>
-            <li><a href="./Home.html">Home</a></li>
-            <li><a href="./About.html">About</a></li>
-            <li><a href="./Product.html">Product</a></li>
-            <li><a href="./Services.html">Services</a></li>
-            <li><a href="./Contact.html">Contact</a></li>
-            <li><a href="./profile.html">Profile</a></li>
-            <li><button class="logout-button" onclick="logout()">logout</button></li>
-        </ul>
-    </nav>
+      const foodApi = '33c746aa02884eb4a6aca74c4da605fa';
+
+      const fetchRecipe = async () => {
+        try {
+          const response = await fetch(`https://api.spoonacular.com/recipes/random?number=6&apiKey=${foodApi}`);
+          const data = await response.json();
+          const foodSection = document.querySelector('.food-section');
+          if (data.recipes && data.recipes.length > 0) {
+            data.recipes.map(recipe => {
+              console.log(recipe.id)
+              const div = document.createElement('div');
+
+              const title = document.createElement('h2');
+              title.textContent = recipe.title;
+              div.appendChild(title);
+
+              const image = document.createElement('img');
+              image.src = recipe.image;
+              image.alt = recipe.title;
+              image.style.maxWidth = '400px';
+              div.appendChild(image);
+
+              const summary = document.createElement('p');
+                summary.innerHTML = recipe.summary.substring(0, 100) + '...';
+              div.appendChild(summary);
+
+              const readMoreButton = document.createElement('button');
+              readMoreButton.classList.add('read-more-button');
+              readMoreButton.textContent = 'Read More';
+              readMoreButton.addEventListener('click', () => {
+                summary.innerHTML = recipe.summary;
+              });
+              div.appendChild(readMoreButton);
+
+              foodSection.appendChild(div);
+            });
+          } else {
+            const title = document.createElement('h2');
+              title.textContent = 'No recipes available at the moment.';
+              foodSection.appendChild(title);
+          }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+
+      fetchRecipe();
+
+    </script>
 </body>
+</html>
